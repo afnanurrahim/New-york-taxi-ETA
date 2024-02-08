@@ -13,6 +13,9 @@
 
 - [@afnanurrahim](https://github.com/afnanurrahim)
 
+## Overview
+This project utilizes XGBoost to predict estimated time of arrival (ETA) for New York City taxi trips. Trained on a dataset of **16 million** journeys, the model achieved a **2.6 minute** Mean Absolute Error (MAE), representing a 45% improvement over simple linear regression. The ETA prediction API, developed with **FastAPI**, offers efficient and seamless access to predictions for users.
+
 ## Table of Contents
 
   - [Business problem](#business-problem)
