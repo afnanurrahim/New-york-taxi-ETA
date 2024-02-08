@@ -24,6 +24,7 @@
   - [Lessons learned](#lessons-learned)
   - [Limitation and what can be improved](#limitation-and-what-can-be-improved)
   - [App deployed on FastAPI](#app-deployed-on-fastapi)
+  - [API Tutorial](#api-tutorial)
   - [Prediction error analyzer](#prediction-error-analyzer)
   - [Repository structure](#repository-structure)
   - [License](#license)
@@ -104,6 +105,27 @@ ___
 ![FastAPI gif](Media/Api.gif)
 
 [![FastAPI](https://img.shields.io/badge/API-FastAPI_app-1ab065)](https://afnanurrahim-new-york-eta.hf.space/docs)
+
+___
+## API Tutorial
+```python
+import requests
+
+# Example parameters
+parm = {
+  "taxi_company": "Uber", "trip_miles": 5.5, "wav_request_flag": False, "wav_match_flag": True, "dispatching_base_num": "B02512",
+  "PULocationID": 3, "DOLocationID": 258, "any_tolls": True, "hour_of_day": 13, "day_of_week": "Monday", "month": "May",
+  "traffic": 1000, "feel": 20, "humidity": 83, "BR": True, "CLR": True, "SN": True, "wind_speed": 20, "wind_direction": "N"
+}
+
+response = requests.post('https://afnanurrahim-new-york-eta.hf.space/predict', json= parm)
+print(response.json())
+
+# Output:
+# 18.61781597137451
+
+```
+
 ___
 ## Prediction error analyzer
 ![Streamlit gif](Media/error_analyzer.gif)
