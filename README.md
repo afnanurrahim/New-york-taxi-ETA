@@ -60,6 +60,9 @@ ___
 ___
 ## Tableau Visualization
 ![Tableau dashboard](Media/tableau.gif)
+
+
+[![Tableau](https://img.shields.io/badge/Visualization-Tableau-347bed)](https://public.tableau.com/views/Newyorkstaxitraffic/Story1?:language=en-US&:display_count=n&:origin=viz_share_link)
 ___
 ## Results
 **Mean Absolute Error for training and validation set**
