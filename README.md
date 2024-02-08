@@ -23,8 +23,8 @@
   - [Results](#results)
   - [Lessons learned](#lessons-learned)
   - [Limitation and what can be improved](#limitation-and-what-can-be-improved)
-  - [App deployed on FastAPI](#app-deployed-on-fastapi)
   - [API Tutorial](#api-tutorial)
+  - [App deployed on FastAPI](#app-deployed-on-fastapi)
   - [Prediction error analyzer](#prediction-error-analyzer)
   - [Repository structure](#repository-structure)
   - [License](#license)
@@ -78,6 +78,10 @@ XGBoost vs Linear Regression
 | Linear Regression         	| 4.77 	          |
 | XGBoost               	    | 2.60 	          |
 
+**Percentage Improvement:**
+=  $$\frac{LinearRegression − XGBoost}{LinearRegression} * 100 = \frac{4.77 - 2.6}{4.77} * 100  = 45.4$$
+We can see there is a **45%** improvement in result.
+
 - **The final model used for this project: XGBoost**
 - **Why I chose XGBoost**:
   - **Handling non-linear relationships**: XGBoost effectively models complex, non-linear relationships between predictor variables (e.g., traffic conditions, weather) and the target variable (ETA), capturing intricate interactions.
@@ -101,12 +105,6 @@ ___
 - **Enhanced traffic data integration**: Implementing predictive models to forecast traffic conditions could enrich the app's analysis and provide more accurate insights into factors affecting trip durations.
 - **Expansion to ride pricing prediction**: Extending the app's functionality to predict ride prices across multiple platforms such as Uber, Via, and Lyft would offer users comprehensive information for informed decision-making regarding transportation choices.
 ___
-## App deployed on FastAPI
-![FastAPI gif](Media/Api.gif)
-
-[![FastAPI](https://img.shields.io/badge/API-FastAPI_app-1ab065)](https://afnanurrahim-new-york-eta.hf.space/docs)
-
-___
 ## API Tutorial
 ```python
 import requests
@@ -125,6 +123,11 @@ print(response.json())
 # 18.61781597137451
 
 ```
+___
+## App deployed on FastAPI
+![FastAPI gif](Media/Api.gif)
+
+[![FastAPI](https://img.shields.io/badge/API-FastAPI_app-1ab065)](https://afnanurrahim-new-york-eta.hf.space/docs)
 
 ___
 ## Prediction error analyzer
