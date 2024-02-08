@@ -5,6 +5,8 @@
 ![Type of ML](https://img.shields.io/badge/Type%20of%20ML-%20Regression-red)
 ![License](https://img.shields.io/badge/License-MIT-green)
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![FastAPI](https://img.shields.io/badge/API-FastAPI_app-1ab065)](https://afnanurrahim-new-york-eta.hf.space/docs)
+
 
 
 ## Authors
@@ -17,31 +19,94 @@
   - [Data source](#data-source)
   - [Tech Stack](#tech-stack)
   - [Pipeline](#pipeline)
+  - [Tableau Visualization](#tableau-visualization)
   - [Results](#results)
   - [Lessons learned](#lessons-learned)
   - [Limitation and what can be improved](#limitation-and-what-can-be-improved)
   - [App deployed on FastAPI](#app-deployed-on-fastapi)
+  - [Prediction error analyzer](#prediction-error-analyzer)
   - [Repository structure](#repository-structure)
   - [License](#license)
 
 ## Business problem
 
 This FastAPI web application aims to predict the estimated time of arrival (ETA) for New York City taxis in 2021. The prediction is based on factors such as the hour of the day, traffic conditions, holidays, weather etc. providing valuable insights for taxi service optimization.
-
+___
 ## Data source
 - [TLC Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 - [Hourly weather Dataset](https://mesonet.agron.iastate.edu/request/download.phtml?network=NY_ASOS)
-
+___
 ## Tech Stack
 - Python
 - FastAPI  (For building the api)
 - Streamlit  (For error analyzer web app)
 - Tableau    (For Data visualization)
 - Hugginface   (For web app deployment)
+___
+## Pipeline
+- Defining problem statement
+- Data collection
+- Sampling
+- EDA
+  - Data cleaning
+  - Feature engineering
+  - Uni, bi and multivariate analysis
+  - Hypothesis testing
+  - Feature selection
+  - Data visualization
+- Model building
+- Visualization of prediction
+- Deployment
+___
+## Tableau Visualization
+![Tableau dashboard](Media/tableau.gif)
+___
+## Results
+**Mean Absolute Error for training and validation set**
 
+![MAE](Media/MAE.png)
+
+XGBoost vs Linear Regression
+> Comparing result of Xgboost with a simple linear regression model on trip_time vs trip_miles
+
+| Model     	                | MAE (in minutes)|
+|-------------------	        |-----------------|
+| Linear Regression         	| 4.77 	          |
+| XGBoost               	    | 2.60 	          |
+
+- **The final model used for this project: XGBoost**
+- **Why I chose XGBoost**:
+  - **Handling non-linear relationships**: XGBoost effectively models complex, non-linear relationships between predictor variables (e.g., traffic conditions, weather) and the target variable (ETA), capturing intricate interactions.
+  - **Robustness to outliers**: XGBoost's ensemble learning approach mitigates the impact of outliers by averaging their effects across multiple weak learners, ensuring robust predictions.
+  - **Performance on large data**: XGBoost's optimized implementation and parallel processing capabilities enable efficient training and prediction on extensive datasets, maintaining high performance without compromising speed or memory efficiency.
+
+- **Why I chose MAE as metrics**:
+  Mean Absolute Error (MAE) is a suitable metric for ETA prediction because it provides a clear interpretation of the average magnitude of errors in the predicted ETA values. Additionally, MAE is robust to outliers and provides a more balanced view of prediction errors compared to other metrics like Mean Squared Error (MSE), which penalizes larger errors more heavily.
+
+> Another reason why I chose MAE as a metric is because of a research paper published by Uber titled:
+
+>  "DeepETA: How Uber Predicts Arrival Times Using Deep Learning"
+___
+## Lessons learned
+- **Defining the target column is crucial**: Choosing the right target variable, such as using "minutes per mile" instead of "trip time," ensures a more accurate analysis of the relationship between features like weather and traffic with trip duration.
+- **Data understanding is essential**: A thorough understanding of the dataset helps in efficient analysis during Exploratory Data Analysis (EDA), ultimately saving time and effort.
+- **Handling big data challenges**: Spark's data processing limitations necessitated processing large datasets in batches. This approach helped manage data size efficiently.
+- **Efficient feature selection strategies**: Traditional feature selection methods were time-consuming for large datasets. Sampling data and utilizing filter-based feature selection methods proved effective in handling skewed data and optimizing feature selection process.
+___
+## Limitation and what can be improved
+- **Enhanced traffic data integration**: Implementing predictive models to forecast traffic conditions could enrich the app's analysis and provide more accurate insights into factors affecting trip durations.
+- **Expansion to ride pricing prediction**: Extending the app's functionality to predict ride prices across multiple platforms such as Uber, Via, and Lyft would offer users comprehensive information for informed decision-making regarding transportation choices.
+___
 ## App deployed on FastAPI
 ![FastAPI gif](Media/Api.gif)
 
+[![FastAPI](https://img.shields.io/badge/API-FastAPI_app-1ab065)](https://afnanurrahim-new-york-eta.hf.space/docs)
+___
+## Prediction error analyzer
+![Streamlit gif](Media/error_analyzer.gif)
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://afnanurrahim-model-error-analyzer.hf.space)
+___
 ## Repository structure
 ```
 
@@ -93,7 +158,7 @@ This FastAPI web application aims to predict the estimated time of arrival (ETA)
 ├── README.md                                     <- this readme file.
 
 ```
-
+___
 ## License
 MIT License
 
