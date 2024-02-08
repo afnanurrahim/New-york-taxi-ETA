@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+pickle
+numpy==1.21.6
+pydantic
